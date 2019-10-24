@@ -1,0 +1,1 @@
+Création d'un modèle de chart qui étend le modèle doughnut en lui ajoutant du texte au milieu et sur chaque région.
