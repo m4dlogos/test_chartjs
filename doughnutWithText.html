@@ -46,13 +46,14 @@
 		        	}
 		    	});
 
-				ctx.font = '48px arial'; // '48px sherif';
+				ctx.font = '52px arial'; // '48px sherif';
 				ctx.fillStyle = 'black';
 				ctx.textBaseline = 'middle';
+				var model = this.chart.data.datasets[0]._meta[Object.keys(this.chart.data.datasets[0]._meta)[0]].data[0]._model;
 				var total = this.chart.data.datasets[0].data[0] + this.chart.data.datasets[0].data[1];
 				var conforme = this.chart.data.datasets[0].data[0];
 				var percent = Number(conforme/total).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0});
-            	ctx.fillText(percent + " conforme", this.chart.width/2 + 50, this.chart.height/1.5, 250);
+            	ctx.fillText(percent + " conforme", this.chart.width/2 + (model.outerRadius - model.innerRadius), this.chart.height/2 + model.innerRadius/2 , 2*model.innerRadius);
 
 				ctx.restore();
 			},
@@ -91,7 +92,7 @@
 </head>
 <body>
 	<div style="margin: 5px; height: 100%; width: 100%;">
-	<canvas id="myChart" style="width: 400px; height: 400px"></canvas>
+	<canvas id="myChart" style="width: 300px; height: 300px"></canvas>
 	</div>
 	<script type="text/javascript">
 		var ctx = document.getElementById('myChart');
@@ -101,7 +102,7 @@
 	    	labels: ['Conforme', 'Non conforme'],
 	    	datasets: [{
 	    		label: 'conformité',
-	    		data: [10, 5],
+	    		data: [10, 0],
 	    		backgroundColor: ['green', 'red']
 	    		
 	    	}]
